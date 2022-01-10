@@ -30,14 +30,24 @@ app.get('/users', (request, response) => {
     return response.json(users)
 })
 
+// We can add Try and catch in case of errors 
+
 app.post('/users', (request, response) => {
-    const { name, age } = request.body
+try {   const { name, age } = request.body
+
+    if ( age < 18) throw new Error("Only people over 18 are allowed.") // We can create an error 
 
     const user = { id: uuid.v4(), name, age }
 
     users.push(user)
 
     return response.status(201).json(user)
+
+} catch(err) { 
+    return response.status(500).json({error: err.message}) 
+} finally { 
+    console.log("All done") // After the code works, we can add a message or a config here
+}
 })
 
 app.put('/users/:id', checkUserId, (request, response) => {
