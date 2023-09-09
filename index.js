@@ -11,7 +11,12 @@ app.use(cors())
 
 const users = []
 
-/* Utilizando o Middleware conseguimos verificar dados antes da aplicação
+// - Query params = Vamos utilizar principalmente para filtros e paginação
+// - Route params = Identificar recursos na hora de atualizar, buscar ou deletar algo
+// - para utilizar o route params, precisamos colocar um : antes do nome da rota (ex: /users/:id)
+// - Request body = pasar parâmetros para a criação/atualização de um registro pelo corpo da requisição (JSON)
+
+/* Utilizando o Middleware (ITERCEPTADOR) conseguimos verificar dados antes da aplicação
 assim podemos economizar código*/
 
 const checkUserId = (request, response, next) => {
@@ -35,7 +40,8 @@ app.get('/users', (request, response) => {
 // We can add Try and catch in case of errors 
 
 app.post('/users', (request, response) => {
-try {   const { name, age } = request.body
+try {   
+    const { name, age } = request.body
 
     if ( age < 18) throw new Error("Only people over 18 are allowed.") // We can create an error 
 
