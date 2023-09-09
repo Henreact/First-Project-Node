@@ -1,6 +1,6 @@
 ## That´s my first project learning Node.js 🚀
 
-  - I was a simple project to learn HTTP protocol and how to use the verbs GET, POST, PUT, DELETE
+  - It was a simple project to learn HTTP protocol and how to use the verbs GET, POST, PUT, DELETE
   - I used express framework and Insomnia to test the code
   - In a few days I´m going to make a complete API 
  
